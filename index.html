@@ -35,15 +35,37 @@
   header h1 { font-size: 19px; margin: 0; }
   header .sub { color: var(--muted); font-size: 13px; }
   main { max-width: 1180px; margin: 0 auto; padding: 20px; display: grid; gap: 20px; grid-template-columns: minmax(500px, 600px) 1fr; align-items: start; }
-  @media (max-width: 1020px) { main { grid-template-columns: 1fr; } }
-  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+  @media (max-width: 1020px) { main { grid-template-columns: minmax(0, 1fr); } }
+  .card { min-width: 0; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
   .card h2 { font-size: 15px; margin: 0 0 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
   table { width: 100%; border-collapse: collapse; }
   th { text-align: left; font-size: 12px; color: var(--muted); font-weight: 600; padding: 0 6px 6px; text-transform: uppercase; letter-spacing: .04em; }
   #subjects td { padding: 3px 4px; }
-  #subjects td:first-child select { min-width: 200px; }
-  #subjects td:nth-child(2) select { min-width: 96px; }
-  #subjects td:nth-child(3) select { min-width: 76px; }
+  #calc .c-level { width: 104px; } #calc .c-grade { width: 84px; }
+  #calc .c-pts { width: 62px; }    #calc .c-del { width: 28px; }
+  /* Roomy selects only where there is room for them; a phone gets the compact layout. */
+  @media (min-width: 620px) {
+    #subjects td:first-child select { min-width: 200px; }
+    #subjects td:nth-child(2) select { min-width: 96px; }
+    #subjects td:nth-child(3) select { min-width: 76px; }
+  }
+  /* On a phone four controls will not fit on one line without truncating them,
+     so each subject wraps: name on its own row, level/grade/points beneath. */
+  @media (max-width: 619px) {
+    main { padding: 12px; }
+    #calc thead { display: none; }
+    #calc, #subjects, #subjects tr, #subjects td { display: block; width: auto; }
+    #subjects tr {
+      display: grid; grid-template-columns: 1fr 1fr auto 26px;
+      column-gap: 6px; row-gap: 5px; align-items: center;
+      padding: 8px 0; border-bottom: 1px solid var(--line);
+    }
+    #subjects tr:last-child { border-bottom: none; }
+    #subjects td { padding: 0; }
+    #subjects td:first-child { grid-column: 1 / -1; }
+    #subjects select { min-width: 0; }
+    #subjects .pts { text-align: right; }
+  }
   select, input, button {
     font: inherit; color: var(--text); background: var(--panel-2);
     border: 1px solid var(--line); border-radius: 7px; padding: 7px 8px; width: 100%;
@@ -173,9 +195,9 @@
 <main>
   <section class="card">
     <h2>Your results</h2>
-    <table>
+    <table id="calc">
       <thead>
-        <tr><th>Subject</th><th style="width:104px">Level</th><th style="width:84px">Grade</th><th style="width:62px" class="pts">Points</th><th style="width:28px"></th></tr>
+        <tr><th>Subject</th><th class="c-level">Level</th><th class="c-grade">Grade</th><th class="pts c-pts">Points</th><th class="c-del"></th></tr>
       </thead>
       <tbody id="subjects"></tbody>
     </table>
