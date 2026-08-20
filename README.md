@@ -15,10 +15,8 @@ site is down or you have no connection.
 - **Course lookup** — all 1,025 Level 8 courses from `data/LC2025_Points.htm` (29 institutions),
   filtered live to the ones your points would have got you last year. Search by course, code or
   college; filter by institution; compare against Round 1, Round 2, or the lowest round.
-- **Rainbow mode** — the button in the top-right swaps the dark theme for a bright drifting pastel
-  rainbow background, an animated gradient header, colour-cycled subject and course rows, a gradient
-  points total, and a herd of dancing unicorns prancing across the screen. The setting sticks between
-  visits, and all the animation is dropped if you have reduced-motion turned on.
+- **Rainbow mode** — the button in the top-right swaps the dull dark boring theme for a bright 
+  rainbow theme, to keep my wife happy and distract from bad results
 
 ![The same screen in rainbow mode: pastel rainbow background, colour-cycled rows and unicorns mid-prance](docs/screenshot-rainbow.png)
 
