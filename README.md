@@ -4,6 +4,8 @@ A single-file, fully offline web app. Double-click [index.html](index.html) — 
 install. Everything (course data included) is embedded in that one file, so it keeps working if the CAO
 site is down or you have no connection.
 
+![The calculator: eight subject rows on the left with a running points total, matching courses on the right](docs/screenshot.png)
+
 ## What it does
 
 - **Points calculator** — pick level and grade per subject, using the CAO Common Points Scale.
@@ -17,6 +19,8 @@ site is down or you have no connection.
   rainbow background, an animated gradient header, colour-cycled subject and course rows, a gradient
   points total, and a herd of dancing unicorns prancing across the screen. The setting sticks between
   visits, and all the animation is dropped if you have reduced-motion turned on.
+
+![The same screen in rainbow mode: pastel rainbow background, colour-cycled rows and unicorns mid-prance](docs/screenshot-rainbow.png)
 
 ## Notes on the data
 
@@ -32,13 +36,3 @@ Points shown are **2025** cut-offs and are a guide only — this year's will dif
 
 Course titles are truncated in the source listing, so a few are cut off mid-word here too.
 
-## Updating the data
-
-Drop a newer listing into `data/` (same fixed-width format) and run:
-
-```powershell
-powershell -NoProfile -File tools\parse-points.ps1
-```
-
-That regenerates `data/courses.json` and re-embeds it between the `/* COURSES:START */` and
-`/* COURSES:END */` markers in `index.html`.
